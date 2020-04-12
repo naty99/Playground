@@ -1,21 +1,21 @@
 //
-//  Bar.swift
+//  Ball.swift
 //  Pong
 //
-//  Created by Natália Struharová on 12/04/2020.
+//  Created by Thijs Nulle on 12/04/2020.
 //  Copyright © 2020 Bleach. All rights reserved.
 //
 
-import Foundation
 import SpriteKit
 
-class Bar: SKNode {
+class Ball: SKNode {
+    
     private var shape: SKShapeNode?
     
     override init() {
         super.init()
         
-        let shape = SKShapeNode(rectOf: CGSize(width: 150, height: 20), cornerRadius: 5)
+        let shape = SKShapeNode(circleOfRadius: 10)
         shape.lineWidth = 2
         self.shape = shape
         self.addChild(shape)

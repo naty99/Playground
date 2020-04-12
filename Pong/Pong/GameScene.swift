@@ -15,16 +15,17 @@ class GameScene: SKScene {
     var graphs = [String : GKGraph]()
     
     private var lastUpdateTime : TimeInterval = 0
-    private var bar1: Bar = Bar()
+    private var curBar: Bar = Bar()
     private var bar2: Bar = Bar()
+    private var ball: Ball = Ball()
     
     override func sceneDidLoad() {
 
-        self.backgroundColor = SKColor.init(displayP3Red: 0.7, green: 0.1, blue: 0.1, alpha: 1)
+        self.backgroundColor = SKColor.init(displayP3Red: 0.085, green: 0.085, blue: 0.113, alpha: 1)
         
-//        bar1?.position = CGPoint(x: self.frame.width / 2, y: 10)
-        self.addChild(bar1)
-        
+        curBar.position = CGPoint(x: 0, y: -self.frame.height / 2 + 100)
+        self.addChild(curBar)
+        self.addChild(ball)
         
     }
     
@@ -47,7 +48,11 @@ class GameScene: SKScene {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches {
             self.touchMoved(toPoint: t.location(in: self))
-            bar1.position.x = t.location(in: self).x
+            let x = (t.location(in: self).x < -self.frame.width / 2 + 150) ?
+                -self.frame.width / 2 + 150 :
+                (t.location(in: self).x > self.frame.width / 2 - 150) ?
+                self.frame.width / 2 - 150 : t.location(in: self).x
+            curBar.position.x = x
         }
     }
     
@@ -60,11 +65,7 @@ class GameScene: SKScene {
     }
     
     
-    override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
-        
-        bar1.position = bar1.position.applying(CGAffineTransform.init(translationX: 1, y: 0))
-        
+    override func update(_ currentTime: TimeInterval) {                
         // Initialize _lastUpdateTime if it has not already been
         if (self.lastUpdateTime == 0) {
             self.lastUpdateTime = currentTime
