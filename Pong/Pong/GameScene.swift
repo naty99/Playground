@@ -9,17 +9,17 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
     
     private var lastUpdateTime : TimeInterval = 0
     private var curBar: Bar = Bar()
-    private var bar2: Bar = Bar()
     private var ball: Ball = Ball()
     
     override func sceneDidLoad() {
+        physicsWorld.contactDelegate = self
 
         self.backgroundColor = SKColor.init(displayP3Red: 0.085, green: 0.085, blue: 0.113, alpha: 1)
         
@@ -27,6 +27,10 @@ class GameScene: SKScene {
         self.addChild(curBar)
         self.addChild(ball)
         
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        print("contact")
     }
     
     

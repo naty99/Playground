@@ -18,6 +18,12 @@ class Ball: SKNode {
         let shape = SKShapeNode(circleOfRadius: 10)
         shape.lineWidth = 2
         self.shape = shape
+        
+        self.physicsBody = SKPhysicsBody(circleOfRadius: 10)
+//        self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.categoryBitMask = 0b0
+        self.physicsBody?.contactTestBitMask = 0b1
+        
         self.addChild(shape)
     }
     

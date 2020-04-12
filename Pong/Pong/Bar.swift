@@ -18,6 +18,13 @@ class Bar: SKNode {
         let shape = SKShapeNode(rectOf: CGSize(width: 150, height: 20), cornerRadius: 5)
         shape.lineWidth = 2
         self.shape = shape
+        
+        self.physicsBody = SKPhysicsBody(rectangleOf: (self.shape?.frame.size)!)
+        self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.categoryBitMask = 0b1
+        self.physicsBody?.contactTestBitMask = 0b0
+        
+        
         self.addChild(shape)
     }
     
