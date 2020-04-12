@@ -17,6 +17,7 @@
 		9A8749A42443A85700F9793D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A8749A22443A85700F9793D /* LaunchScreen.storyboard */; };
 		9A8749AF2443A85700F9793D /* PongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8749AE2443A85700F9793D /* PongTests.swift */; };
 		9A8749BA2443A85700F9793D /* PongUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8749B92443A85700F9793D /* PongUITests.swift */; };
+		9AFCE3752443AE6900442AC3 /* Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFCE3742443AE6900442AC3 /* Bar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		9A8749B52443A85700F9793D /* PongUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PongUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A8749B92443A85700F9793D /* PongUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongUITests.swift; sourceTree = "<group>"; };
 		9A8749BB2443A85700F9793D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AFCE3742443AE6900442AC3 /* Bar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				9A8749A02443A85700F9793D /* Assets.xcassets */,
 				9A8749A22443A85700F9793D /* LaunchScreen.storyboard */,
 				9A8749A52443A85700F9793D /* Info.plist */,
+				9AFCE3742443AE6900442AC3 /* Bar.swift */,
 			);
 			path = Pong;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A87499A2443A85600F9793D /* GameScene.swift in Sources */,
+				9AFCE3752443AE6900442AC3 /* Bar.swift in Sources */,
 				9A87499C2443A85600F9793D /* GameViewController.swift in Sources */,
 				9A8749942443A85500F9793D /* AppDelegate.swift in Sources */,
 			);
@@ -445,6 +449,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 96K845G899;
 				INFOPLIST_FILE = Pong/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -463,6 +468,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 96K845G899;
 				INFOPLIST_FILE = Pong/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
