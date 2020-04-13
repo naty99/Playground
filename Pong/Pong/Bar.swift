@@ -23,6 +23,7 @@ class Bar: SKNode {
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.categoryBitMask = 0b1
         self.physicsBody?.contactTestBitMask = 0b0
+        self.physicsBody?.isDynamic = false
         
         
         self.addChild(shape)

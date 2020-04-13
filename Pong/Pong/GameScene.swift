@@ -54,15 +54,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let h = self.frame.height / 2 - self.ball.getR()
         if (point.x < -w || point.x > w) {
             physicsWorld.gravity = CGVector(
-                dx: -physicsWorld.gravity.dx * CGFloat.random(in: 0.5...1.5),
-                dy: physicsWorld.gravity.dy * CGFloat.random(in: 0.5...1.5))
+                dx: -physicsWorld.gravity.dx * CGFloat.random(in: 0.8...1.2),
+                dy: physicsWorld.gravity.dy * CGFloat.random(in: 0.5...2))
         } else {
             if (point.y < -h || point.y > h) {
                 print("you lost")
             } else {
                 physicsWorld.gravity = CGVector(
-                dx: physicsWorld.gravity.dx * CGFloat.random(in: 0.5...1.5),
-                dy: -physicsWorld.gravity.dy * CGFloat.random(in: 0.5...1.5))
+                    dx: physicsWorld.gravity.dx * CGFloat.random(in: 0.8...1.2),
+                dy: -physicsWorld.gravity.dy * CGFloat.random(in: 0.5...2))
             }
         }
     }
@@ -80,6 +80,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for t in touches {
+            let move = SKAction.moveTo(x: t.location(in: self).x, duration: 0.1)
+            bar.run(move)
+        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
