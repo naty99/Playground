@@ -85,8 +85,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
         let point = contact.contactPoint
-        let w = self.frame.width / 2 - self.ball.getR() - self.r
-        let h = self.frame.height / 2 - self.ball.getR()
+        let w = self.frame.width / 2 - self.ball.getRadius() - self.r
+        let h = self.frame.height / 2 - self.ball.getRadius()
         if (point.x < -w || point.x > w) {
             physicsWorld.gravity = CGVector(
                 dx: -physicsWorld.gravity.dx,

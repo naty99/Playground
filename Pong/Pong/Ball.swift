@@ -20,7 +20,6 @@ class Ball: SKNode {
         self.shape = shape
         
         self.physicsBody = SKPhysicsBody(circleOfRadius: 10)
-//        self.physicsBody?.affectedByGravity = false
         self.physicsBody?.categoryBitMask = 0b10
         self.physicsBody?.collisionBitMask = 0b1
         self.physicsBody?.contactTestBitMask = 0b1
@@ -28,7 +27,7 @@ class Ball: SKNode {
         self.addChild(shape)
     }
     
-    func getR() -> CGFloat {
+    func getRadius() -> CGFloat {
         return (self.shape?.frame.width)! / 2.0
     }
     
