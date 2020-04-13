@@ -28,6 +28,10 @@ class Bar: SKNode {
         self.addChild(shape)
     }
     
+    func getWidth() -> CGFloat {
+        return (self.shape?.frame.width)!
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

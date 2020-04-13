@@ -43,7 +43,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let point = contact.contactPoint
         let w = self.frame.width / 2 - 75
         let h = self.frame.height / 2 - 5
-        print(point)
         if (point.x < -w || point.x > w) {
             physicsWorld.gravity = CGVector(
                 dx: -physicsWorld.gravity.dx * CGFloat.random(in: 0.5...1.5),
@@ -77,9 +76,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches {
             self.touchMoved(toPoint: t.location(in: self))
-            var x: CGFloat
-            if (t.location(in: self).x < -self.frame.width / 2 + 150) { x = -self.frame.width / 2 + 150 }
-            else if (t.location(in: self).x > self.frame.width / 2 - 150) { x = self.frame.width / 2 - 150 }
+            var x: CGFloat, w = self.curBar.getWidth()
+            if (t.location(in: self).x < -self.frame.width / 2 + w) { x = -self.frame.width / 2 + w }
+            else if (t.location(in: self).x > self.frame.width / 2 - w) { x = self.frame.width / 2 - w }
             else { x = t.location(in: self).x }
             curBar.position.x = x
         }
