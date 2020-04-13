@@ -11,6 +11,8 @@ import SpriteKit
 
 class Planet: SKNode {
     
+    var outerPhysics: SKPhysicsBody?
+    
     override init() {
         super.init()
         
@@ -18,8 +20,10 @@ class Planet: SKNode {
         let shape = SKShapeNode(circleOfRadius: radius)
         shape.fillColor = UIColor.white
         
-        self.physicsBody = SKPhysicsBody.init(circleOfRadius: radius)
+        self.physicsBody = SKPhysicsBody(circleOfRadius: radius + CGFloat(11) * radius / 2)
         self.physicsBody?.affectedByGravity = false
+//        self.physicsBody?.collisionBitMask = 0b0
+//        self.
         
         for i in 0...10 {
             let circle = SKShapeNode(circleOfRadius: radius + CGFloat(i + 1) * radius / 2)
