@@ -29,20 +29,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     override func sceneDidLoad() {
-        opponentScoreLabel.text = "\(opponentScore)"
-        playerScoreLabel.text = "\(playerScore)"
-        
-        opponentScoreLabel.fontName = "pixelmix.ttf"
-        playerScoreLabel.fontName = "pixelmix.ttf"
-        
-        opponentScoreLabel.fontSize = 50
-        playerScoreLabel.fontSize = 50
-        
-        opponentScoreLabel.position = CGPoint(x: self.frame.minX + 100, y: 20)
-        playerScoreLabel.position = CGPoint(x: self.frame.maxX - 100, y: -20 - opponentScoreLabel.frame.height)
-        
-        addChild(opponentScoreLabel)
-        addChild(playerScoreLabel)
+        setLabels()
         
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector(
@@ -84,27 +71,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
+        let planetHit = (contact.bodyA.node!.isEqual(to: planet) || contact.bodyB.node!.isEqual(to: planet))
         let point = contact.contactPoint
+        
         let w = self.frame.width / 2 - self.ball.getRadius() - self.r
         let h = self.frame.height / 2 - self.ball.getRadius()
-        if (point.x < -w || point.x > w) {
-            physicsWorld.gravity = CGVector(
-                dx: -physicsWorld.gravity.dx,
-                dy: physicsWorld.gravity.dy * CGFloat.random(in: 1...1.5))
-        } else {
-            if (point.y < -h || point.y > h) {
-                let center = SKAction.move(to: CGPoint(x: 0, y: 0), duration: 0)
-                self.ball.run(center)
-                self.ball.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-                physicsWorld.gravity = CGVector(dx: 1, dy: 1)
+        
+        if (!planetHit) {
+            if (point.x < -w || point.x > w) {
+                physicsWorld.gravity = CGVector(
+                    dx: -physicsWorld.gravity.dx,
+                    dy: physicsWorld.gravity.dy * CGFloat.random(in: 1...1.5))
             } else {
-                let pos = (point.y > 0) ? self.opp.getBar().position : self.bar.position
-                 var dy = -physicsWorld.gravity.dy * CGFloat.random(in: 1...1.5)
-                 dy = (dy > 0) ? min(dy, 4) : max(dy, -4)
-                 let perc = (pos.x - point.x) / 150
-                 let diff = perc * 6 + dy * CGFloat.random(in: 0.75...1.5) * (CGFloat.random(in: 0...1) > 0.5 ? 1 : -1)
-                
-                 physicsWorld.gravity = CGVector(dx: diff, dy: dy)
+                if (point.y < -h || point.y > h) {
+                    let center = SKAction.move(to: CGPoint(x: 0, y: 0), duration: 0)
+                    self.ball.run(center)
+                    self.ball.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+                    physicsWorld.gravity = CGVector(dx: 1, dy: 1)
+                } else {
+                    let pos = (point.y > 0) ? self.opp.getBar().position : self.bar.position
+                     var dy = -physicsWorld.gravity.dy * CGFloat.random(in: 1...1.5)
+                     dy = (dy > 0) ? min(dy, 4) : max(dy, -4)
+                     let perc = (pos.x - point.x) / 150
+                     let diff = perc * 6 + dy * CGFloat.random(in: 0.75...1.5) * (CGFloat.random(in: 0...1) > 0.5 ? 1 : -1)
+                    
+                     physicsWorld.gravity = CGVector(dx: diff, dy: dy)
+                }
             }
         }
         
@@ -174,5 +166,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         opp.update(ball: self.ball)
         
         self.lastUpdateTime = currentTime
+    }
+    
+    func setLabels() {
+        opponentScoreLabel.text = "\(opponentScore)"
+        playerScoreLabel.text = "\(playerScore)"
+        
+        opponentScoreLabel.fontName = "pixelmix.ttf"
+        playerScoreLabel.fontName = "pixelmix.ttf"
+        
+        opponentScoreLabel.fontSize = 50
+        playerScoreLabel.fontSize = 50
+        
+        opponentScoreLabel.position = CGPoint(x: self.frame.minX + 100, y: 20)
+        playerScoreLabel.position = CGPoint(x: self.frame.maxX - 100, y: -20 - opponentScoreLabel.frame.height)
+        
+        addChild(opponentScoreLabel)
+        addChild(playerScoreLabel)
     }
 }
