@@ -31,18 +31,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func sceneDidLoad() {
         setLabels()
         
-        physicsWorld.contactDelegate = self
-        physicsWorld.gravity = CGVector(
-            dx: CGFloat.random(in: 1...2) * ((CGFloat.random(in: 0...1) > 0.5) ? 1 : -1),
-            dy: -1)
-        
-        self.physicsBody = SKPhysicsBody(edgeLoopFrom: CGRect(
-            x: -self.frame.width / 2 + self.r, y: -self.frame.height / 2,
-            width: self.frame.width - 2 * self.r, height: self.frame.height))
-        self.physicsBody?.affectedByGravity = false
-        self.physicsBody?.restitution = 1.25
-        self.physicsBody?.categoryBitMask = 0b1
-        self.physicsBody?.contactTestBitMask = 0b0
+        setPhysics()
 
         self.backgroundColor = SKColor.init(displayP3Red: 0.085, green: 0.085, blue: 0.113, alpha: 1)
         
@@ -72,8 +61,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-        let node1 = contact.bodyA.node
-        let node2 = contact.bodyB.node
+        let type1 = NSStringFromClass(contact.bodyA.node!.classForCoder)
+        let type2 = NSStringFromClass(contact.bodyB.node!.classForCoder)
+        
+        // Bar vs. Ball
+        if ((type1 == "Pong.Ball" && type2 == "Pong.Bar") || (type2 == "Pong.Ball" && type1 == "Pong.Bar")) {
+            print("success")
+        }
+        
         
         let planetHit = (contact.bodyA.node!.isEqual(to: planet) || contact.bodyB.node!.isEqual(to: planet))
         
@@ -216,5 +211,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         addChild(opponentScoreLabel)
         addChild(playerScoreLabel)
+    }
+    
+    func setPhysics() {
+        physicsWorld.contactDelegate = self
+        physicsWorld.gravity = CGVector(
+            dx: CGFloat.random(in: 1...2) * ((CGFloat.random(in: 0...1) > 0.5) ? 1 : -1),
+            dy: -1)
+        
+        self.physicsBody = SKPhysicsBody(edgeLoopFrom: CGRect(
+            x: -self.frame.width / 2 + self.r, y: -self.frame.height / 2,
+            width: self.frame.width - 2 * self.r, height: self.frame.height))
+        self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.restitution = 1.25
+        self.physicsBody?.categoryBitMask = 0b1
+        self.physicsBody?.contactTestBitMask = 0b0
     }
 }
