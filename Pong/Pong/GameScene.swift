@@ -17,7 +17,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var lastUpdateTime : TimeInterval = 0
     private var bar: Bar = Bar()
     private var ball: Ball = Ball()
-    private var opp: Opponent = Opponent(5.0)
+    private var opp: Opponent = Opponent(10.0)
     private var r: CGFloat = 70.0
     
     private var opponentScore: Int = 0
@@ -85,16 +85,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let h = self.frame.height / 2 - self.ball.getR()
         if (point.x < -w || point.x > w) {
             physicsWorld.gravity = CGVector(
-                dx: -physicsWorld.gravity.dx * CGFloat.random(in: 0.8...1.2),
-                dy: physicsWorld.gravity.dy * CGFloat.random(in: 0.5...2))
+                dx: -physicsWorld.gravity.dx,
+                dy: physicsWorld.gravity.dy * CGFloat.random(in: 1...1.5))
         } else {
             if (point.y < -h || point.y > h) {
-                let recenter = SKAction.move(to: CGPoint(x: 0, y: 0), duration: 1)
-                ball.run(recenter)
+                let center = SKAction.move(to: CGPoint(x: 0, y: 0), duration: 0)
+                self.ball.run(center)
+                self.ball.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+                physicsWorld.gravity = CGVector(dx: 1, dy: 1)
             } else {
-                physicsWorld.gravity = CGVector(
-                    dx: physicsWorld.gravity.dx * CGFloat.random(in: 0.8...1.2),
-                dy: -physicsWorld.gravity.dy * CGFloat.random(in: 0.5...2))
+                let pos = (point.y > 0) ? self.opp.getBar().position : self.bar.position
+                var dy = -physicsWorld.gravity.dy * CGFloat.random(in: 1...1.5)
+                dy = (dy > 0) ? min(dy, 10) : max(dy, -10)
+                let perc = (pos.x - point.x) / 150
+                let diff = perc * 6 + dy * CGFloat.random(in: -1...1)
+               
+                physicsWorld.gravity = CGVector(dx: diff, dy: dy)
             }
         }
         
