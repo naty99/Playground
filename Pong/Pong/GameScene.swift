@@ -18,6 +18,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var bar: Bar = Bar()
     private var ball: Ball = Ball()
     private var opp: Opponent = Opponent(10.0)
+    private var planet: Planet = Planet()
     private var r: CGFloat = 70.0
     
     private var opponentScore: Int = 0
@@ -65,7 +66,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(ball)
         
         // Add planet
-        self.addChild(Planet())
+        self.addChild(planet)
         
         // Add opponent
         self.opp.setPosition(pos: CGPoint(x: 0, y: self.frame.height / 2 - 100))

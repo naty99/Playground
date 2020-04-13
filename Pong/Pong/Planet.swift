@@ -14,12 +14,17 @@ class Planet: SKNode {
     override init() {
         super.init()
         
-        let radius = CGFloat.random(in: 20...100)
+        let radius: CGFloat = CGFloat.random(in: 20...30)
         let shape = SKShapeNode(circleOfRadius: radius)
-        shape.fillColor = UIColor.red
+        shape.fillColor = UIColor.white
         
         self.physicsBody = SKPhysicsBody.init(circleOfRadius: radius)
         self.physicsBody?.affectedByGravity = false
+        
+        for i in 1...5 {
+            let circle = SKShapeNode(circleOfRadius: radius * CGFloat(i))
+            self.addChild(circle)
+        }
         
         addChild(shape)
     }
