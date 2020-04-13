@@ -95,28 +95,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if (!planetHit) {
-            if (point.x < -w || point.x > w) {
-                let vel = (self.ball.physicsBody?.velocity)!
-                if (point.x < -w) {
-                    self.ball.physicsBody?.velocity = CGVector(dx: (vel.dx > self.frame.width) ? self.frame.width : vel.dx, dy: vel.dy)
-                } else {
-                    self.ball.physicsBody?.velocity = CGVector(dx: (vel.dx < -self.frame.width) ? -self.frame.width : vel.dx, dy: vel.dy)
-                }
-            } else {
-                if (point.y < -h || point.y > h) {
-                    let center = SKAction.move(to: CGPoint(x: 0, y: 0), duration: 0)
-                    self.ball.run(center)
-                    self.ball.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-                    physicsWorld.gravity = CGVector(dx: 1, dy: 1)
-                } else {
-                    let pos = (point.y > 0) ? self.opp.getBar().position : self.bar.position
-                    var dy = -physicsWorld.gravity.dy * CGFloat.random(in: 1...1.5)
-                    dy = (dy > 0) ? min(dy, 6) : max(dy, -6)
-                    let perc = (pos.x - point.x) / 150
-                    let diff = perc * 5 + dy * (CGFloat.random(in: 0...1) > 0.5 ? 1 : -1)
-                    
-                    physicsWorld.gravity = CGVector(dx: diff, dy: dy)
-                }
+            if (point.x < -w || point.x > w) { collisionSides() }
+            else {
+                if (point.y < -h || point.y > h) { score() }
+                else { collisionBar(p: point) }
             }
         }
         
@@ -186,6 +168,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         opp.update(ball: self.ball)
         
         self.lastUpdateTime = currentTime
+    }
+    
+    func limit(vec: CGVector, dx: CGFloat, dy: CGFloat) -> CGVector {
+        var x: CGFloat = 0.0, y: CGFloat = 0.0
+        if (vec.dx > 0) { x = (vec.dx > dx) ? dx : vec.dx }
+        if (vec.dx <= 0) { x = (vec.dx < -dx) ? -dx : vec.dx }
+        if (vec.dy > 0) { y = (vec.dy > dy) ? dy : vec.dy }
+        if (vec.dy <= 0) { y = (vec.dy < -dy) ? -dy : vec.dy }
+        return CGVector(dx: x, dy: y)
+    }
+    
+    func collisionSides() {
+        self.ball.physicsBody?.velocity =
+            limit(vec: (self.ball.physicsBody?.velocity)!, dx: self.frame.width, dy: CGFloat.greatestFiniteMagnitude)
+    }
+    
+    func collisionBar(p: CGPoint) {
+        let pos = (p.y > 0) ? self.opp.getBar().position : self.bar.position
+        var dy = -physicsWorld.gravity.dy * CGFloat.random(in: 1...1.5)
+        dy = (dy > 0) ? min(dy, 6) : max(dy, -6)
+        let perc = (pos.x - p.x) / 150
+        let diff = perc * 5 + dy * (CGFloat.random(in: 0...1) > 0.5 ? 1 : -1)
+        
+        physicsWorld.gravity = CGVector(dx: diff, dy: dy)
+    }
+    
+    func score() {
+        let center = SKAction.move(to: CGPoint(x: 0, y: 0), duration: 0)
+        self.ball.run(center)
+        self.ball.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        physicsWorld.gravity = CGVector(dx: 1, dy: 1)
     }
     
     func setLabels() {
