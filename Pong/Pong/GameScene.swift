@@ -53,8 +53,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 print("you lost")
             } else {
                 physicsWorld.gravity = CGVector(
-                dx: physicsWorld.gravity.dx  * CGFloat.random(in: 0.5...1.5),
-                dy: -physicsWorld.gravity.dy  * CGFloat.random(in: 0.5...1.5))
+                dx: physicsWorld.gravity.dx * CGFloat.random(in: 0.5...1.5),
+                dy: -physicsWorld.gravity.dy * CGFloat.random(in: 0.5...1.5))
             }
         }
     }
@@ -77,10 +77,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches {
             self.touchMoved(toPoint: t.location(in: self))
-            let x = (t.location(in: self).x < -self.frame.width / 2 + 150) ?
-                -self.frame.width / 2 + 150 :
-                (t.location(in: self).x > self.frame.width / 2 - 150) ?
-                self.frame.width / 2 - 150 : t.location(in: self).x
+            var x: CGFloat
+            if (t.location(in: self).x < -self.frame.width / 2 + 150) { x = -self.frame.width / 2 + 150 }
+            else if (t.location(in: self).x > self.frame.width / 2 - 150) { x = self.frame.width / 2 - 150 }
+            else { x = t.location(in: self).x }
             curBar.position.x = x
         }
     }
