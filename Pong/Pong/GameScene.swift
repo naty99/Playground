@@ -20,6 +20,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func sceneDidLoad() {
         physicsWorld.contactDelegate = self
+        physicsWorld.gravity = CGVector(
+            dx: CGFloat.random(in: 1...2) * ((CGFloat.random(in: 0...1) > 0.5) ? 1 : -1),
+            dy: -1)
+        
+        self.physicsBody = SKPhysicsBody(edgeLoopFrom: CGRect(
+            x: -self.frame.width / 2 + 70, y: -self.frame.height / 2,
+            width: self.frame.width - 140, height: self.frame.height))
+        self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.categoryBitMask = 0b1
+        self.physicsBody?.contactTestBitMask = 0b0
 
         self.backgroundColor = SKColor.init(displayP3Red: 0.085, green: 0.085, blue: 0.113, alpha: 1)
         
@@ -30,9 +40,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-        print("contact")
+        let point = contact.contactPoint
+        let w = self.frame.width / 2 - 75
+        let h = self.frame.height / 2 - 5
+        print(point)
+        if (point.x < -w || point.x > w) {
+            physicsWorld.gravity = CGVector(
+                dx: -physicsWorld.gravity.dx * CGFloat.random(in: 0.5...1.5),
+                dy: physicsWorld.gravity.dy * CGFloat.random(in: 0.5...1.5))
+        } else {
+            if (point.y < -h || point.y > h) {
+                print("you lost")
+            } else {
+                physicsWorld.gravity = CGVector(
+                dx: physicsWorld.gravity.dx  * CGFloat.random(in: 0.5...1.5),
+                dy: -physicsWorld.gravity.dy  * CGFloat.random(in: 0.5...1.5))
+            }
+        }
     }
-    
     
     func touchDown(atPoint pos : CGPoint) {
         
