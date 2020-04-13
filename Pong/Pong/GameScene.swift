@@ -78,11 +78,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let h = self.frame.height / 2 - self.ball.getRadius()
         
         if (planetHit) {
-            let center = planet.position
+            let center = planet.shape!.position
 //            let ball1 = (node1!.isEqual(to: ball)) ? node1 : node2
             
             let direction = CGVector(dx: (ball.position.x - center.x), dy: (ball.position.y - center.y))
-            let m = hypot(direction.dx, direction.dy)
+            let m: CGFloat = 1
             let vect = CGVector(dx: direction.dx * m, dy: direction.dy * m)
             
             let gravity = SKAction.applyForce(vect, duration: 0.1)
@@ -160,7 +160,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for entity in self.entities {
             entity.update(deltaTime: dt)
         }
+        
+        // Update opponent based on the ball
         opp.update(ball: self.ball)
+        planet.update()
         
         self.lastUpdateTime = currentTime
     }
