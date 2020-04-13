@@ -22,8 +22,9 @@ class Planet: SKNode {
         
         self.physicsBody = SKPhysicsBody(circleOfRadius: radius + CGFloat(11) * radius / 2)
         self.physicsBody?.affectedByGravity = false
-//        self.physicsBody?.collisionBitMask = 0b0
-//        self.
+        self.physicsBody?.categoryBitMask = 0b100
+        self.physicsBody?.collisionBitMask = 0b0
+        self.physicsBody?.contactTestBitMask = 0b10
         
         for i in 0...10 {
             let circle = SKShapeNode(circleOfRadius: radius + CGFloat(i + 1) * radius / 2)
