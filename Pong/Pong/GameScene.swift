@@ -54,7 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(ball)
         
         // Add planet
-//        self.addChild(planet)
+        self.addChild(planet)
         
         // Add opponent
         self.opp.setPosition(pos: CGPoint(x: 0, y: self.frame.height / 2 - 100))
@@ -86,9 +86,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let center = planet.position
 //            let ball1 = (node1!.isEqual(to: ball)) ? node1 : node2
             
-            let direction = CGVector(dx: (center.x - ball.position.x), dy: (center.y - ball.position.y))
-//            let magnitude = hypot(direction.dx, direction.dy)
-            let vect = CGVector(dx: direction.dx * 0.8, dy: 0)
+            let direction = CGVector(dx: (ball.position.x - center.x), dy: (ball.position.y - center.y))
+            let m = hypot(direction.dx, direction.dy)
+            let vect = CGVector(dx: direction.dx * m, dy: direction.dy * m)
             
             let gravity = SKAction.applyForce(vect, duration: 0.1)
             ball.run(gravity)

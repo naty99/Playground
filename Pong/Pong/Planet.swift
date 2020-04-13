@@ -16,7 +16,7 @@ class Planet: SKNode {
     override init() {
         super.init()
         
-        let radius: CGFloat = CGFloat.random(in: 15...25)
+        let radius: CGFloat = CGFloat.random(in: 8...12)
         let steps: Int = Int(radius)
         let shape = SKShapeNode(circleOfRadius: radius)
         shape.fillColor = UIColor.white
