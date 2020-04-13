@@ -98,14 +98,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if (point.x < -w || point.x > w) {
                 let vel = (self.ball.physicsBody?.velocity)!
                 if (point.x < -w) {
-                    self.ball.physicsBody?.velocity = CGVector(dx: (vel.dx < -5.0) ? -5.0 : vel.dx, dy: vel.dy)
+                    self.ball.physicsBody?.velocity = CGVector(dx: (vel.dx > self.frame.width) ? self.frame.width : vel.dx, dy: vel.dy)
                 } else {
-                    self.ball.physicsBody?.velocity = CGVector(dx: (vel.dx > 5.0) ? 5.0 : vel.dx, dy: vel.dy)
+                    self.ball.physicsBody?.velocity = CGVector(dx: (vel.dx < -self.frame.width) ? -self.frame.width : vel.dx, dy: vel.dy)
                 }
-//                    CGVector(x: ((self.ball.physicsBody?.velocity.dx)! > 5.0) ? 5 : self.ball.physicsBody?.velocity.dx, y: self.ball.physicsBody?.velocity.dy)
-//                physicsWorld.gravity = CGVector(
-//                    dx: -physicsWorld.gravity.dx,
-//                    dy: physicsWorld.gravity.dy * CGFloat.random(in: 1...1.5))
             } else {
                 if (point.y < -h || point.y > h) {
                     let center = SKAction.move(to: CGPoint(x: 0, y: 0), duration: 0)
