@@ -37,8 +37,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         opponentScoreLabel.fontSize = 50
         playerScoreLabel.fontSize = 50
         
-        opponentScoreLabel.position = CGPoint(x: self.frame.minX + 100, y: 40)
-        playerScoreLabel.position = CGPoint(x: self.frame.maxX - 100, y: -50)
+        opponentScoreLabel.position = CGPoint(x: self.frame.minX + 100, y: 20)
+        playerScoreLabel.position = CGPoint(x: self.frame.maxX - 100, y: -20 - opponentScoreLabel.frame.height)
         
         addChild(opponentScoreLabel)
         addChild(playerScoreLabel)
@@ -63,6 +63,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Add ball
         self.addChild(ball)
+        
+        // Add planet
+        self.addChild(Planet())
         
         // Add opponent
         self.opp.setPosition(pos: CGPoint(x: 0, y: self.frame.height / 2 - 100))
@@ -95,12 +98,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 physicsWorld.gravity = CGVector(dx: 1, dy: 1)
             } else {
                 let pos = (point.y > 0) ? self.opp.getBar().position : self.bar.position
-                var dy = -physicsWorld.gravity.dy * CGFloat.random(in: 1...1.5)
-                dy = (dy > 0) ? min(dy, 10) : max(dy, -10)
-                let perc = (pos.x - point.x) / 150
-                let diff = perc * 6 + dy * CGFloat.random(in: -1...1)
-               
-                physicsWorld.gravity = CGVector(dx: diff, dy: dy)
+                 var dy = -physicsWorld.gravity.dy * CGFloat.random(in: 1...1.5)
+                 dy = (dy > 0) ? min(dy, 4) : max(dy, -4)
+                 let perc = (pos.x - point.x) / 150
+                 let diff = perc * 6 + dy * CGFloat.random(in: 0.75...1.5) * (CGFloat.random(in: 0...1) > 0.5 ? 1 : -1)
+                
+                 physicsWorld.gravity = CGVector(dx: diff, dy: dy)
             }
         }
         
