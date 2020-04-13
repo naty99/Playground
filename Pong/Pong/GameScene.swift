@@ -40,6 +40,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             x: -self.frame.width / 2 + self.r, y: -self.frame.height / 2,
             width: self.frame.width - 2 * self.r, height: self.frame.height))
         self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.restitution = 1.25
         self.physicsBody?.categoryBitMask = 0b1
         self.physicsBody?.contactTestBitMask = 0b0
 
@@ -53,7 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(ball)
         
         // Add planet
-        self.addChild(planet)
+//        self.addChild(planet)
         
         // Add opponent
         self.opp.setPosition(pos: CGPoint(x: 0, y: self.frame.height / 2 - 100))
@@ -87,7 +88,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             let direction = CGVector(dx: (center.x - ball.position.x), dy: (center.y - ball.position.y))
 //            let magnitude = hypot(direction.dx, direction.dy)
-            let vect = CGVector(dx: direction.dx, dy: direction.dy)
+            let vect = CGVector(dx: direction.dx * 0.8, dy: 0)
             
             let gravity = SKAction.applyForce(vect, duration: 0.1)
             ball.run(gravity)
@@ -95,9 +96,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if (!planetHit) {
             if (point.x < -w || point.x > w) {
-                physicsWorld.gravity = CGVector(
-                    dx: -physicsWorld.gravity.dx,
-                    dy: physicsWorld.gravity.dy * CGFloat.random(in: 1...1.5))
+                let vel = (self.ball.physicsBody?.velocity)!
+                if (point.x < -w) {
+                    self.ball.physicsBody?.velocity = CGVector(dx: (vel.dx < -5.0) ? -5.0 : vel.dx, dy: vel.dy)
+                } else {
+                    self.ball.physicsBody?.velocity = CGVector(dx: (vel.dx > 5.0) ? 5.0 : vel.dx, dy: vel.dy)
+                }
+//                    CGVector(x: ((self.ball.physicsBody?.velocity.dx)! > 5.0) ? 5 : self.ball.physicsBody?.velocity.dx, y: self.ball.physicsBody?.velocity.dy)
+//                physicsWorld.gravity = CGVector(
+//                    dx: -physicsWorld.gravity.dx,
+//                    dy: physicsWorld.gravity.dy * CGFloat.random(in: 1...1.5))
             } else {
                 if (point.y < -h || point.y > h) {
                     let center = SKAction.move(to: CGPoint(x: 0, y: 0), duration: 0)
@@ -106,12 +114,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     physicsWorld.gravity = CGVector(dx: 1, dy: 1)
                 } else {
                     let pos = (point.y > 0) ? self.opp.getBar().position : self.bar.position
-                     var dy = -physicsWorld.gravity.dy * CGFloat.random(in: 1...1.5)
-                     dy = (dy > 0) ? min(dy, 4) : max(dy, -4)
-                     let perc = (pos.x - point.x) / 150
-                     let diff = perc * 6 + dy * CGFloat.random(in: 0.75...1.5) * (CGFloat.random(in: 0...1) > 0.5 ? 1 : -1)
+                    var dy = -physicsWorld.gravity.dy * CGFloat.random(in: 1...1.5)
+                    dy = (dy > 0) ? min(dy, 6) : max(dy, -6)
+                    let perc = (pos.x - point.x) / 150
+                    let diff = perc * 5 + dy * (CGFloat.random(in: 0...1) > 0.5 ? 1 : -1)
                     
-                     physicsWorld.gravity = CGVector(dx: diff, dy: dy)
+                    physicsWorld.gravity = CGVector(dx: diff, dy: dy)
                 }
             }
         }
