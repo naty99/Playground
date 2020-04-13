@@ -15,15 +15,16 @@ class Planet: SKNode {
         super.init()
         
         let radius: CGFloat = CGFloat.random(in: 15...25)
+        let steps: Int = Int(radius)
         let shape = SKShapeNode(circleOfRadius: radius)
         shape.fillColor = UIColor.white
         
         self.physicsBody = SKPhysicsBody.init(circleOfRadius: radius)
         self.physicsBody?.affectedByGravity = false
         
-        for i in 0...10 {
-            let circle = SKShapeNode(circleOfRadius: radius + CGFloat(i + 1) * radius / 2)
-            circle.strokeColor = UIColor(hue: 0, saturation: 0, brightness: 1, alpha: 1 - 0.1 * CGFloat(i))
+        for i in 0...steps {
+            let circle = SKShapeNode(circleOfRadius: radius + CGFloat(i + 1) * radius / CGFloat(steps) * 8)
+            circle.strokeColor = UIColor(hue: 0, saturation: 0, brightness: 1, alpha: 1 - 1 / CGFloat(steps) * CGFloat(i))
             self.addChild(circle)
         }
         
