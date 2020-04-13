@@ -46,6 +46,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.opp.setPosition(pos: CGPoint(x: 0, y: self.frame.height / 2 - 100))
         self.addChild(self.opp.getBar())
         
+        let pattern : [CGFloat] = [20.0, 10.0]
+        let line = SKShapeNode()
+        let pathToDraw = CGMutablePath()
+        pathToDraw.move(to: CGPoint(x: -self.frame.width / 2, y: 0))
+        pathToDraw.addLine(to: CGPoint(x: self.frame.width / 2, y: 0))
+        let dashed = pathToDraw.copy(dashingWithPhase: 1, lengths: pattern)
+        line.path = dashed
+        line.lineWidth = 2
+        self.addChild(line)
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
