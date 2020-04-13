@@ -71,10 +71,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
+        let node1 = contact.bodyA.node
+        let node2 = contact.bodyB.node
+        
         let planetHit = (contact.bodyA.node!.isEqual(to: planet) || contact.bodyB.node!.isEqual(to: planet))
+        
         let point = contact.contactPoint
         let w = self.frame.width / 2 - self.ball.getR() - self.r
         let h = self.frame.height / 2 - self.ball.getR()
+        
+        if (planetHit) {
+            let center = planet.position
+            let ball1 = (node1!.isEqual(to: ball)) ? node1 : node2
+            
+            let direction = CGVector(dx: (center.x - ball1!.position.x) * 0.1, dy: (center.y - ball1!.position.y) * 0.1)
+            let magnitude = hypot(direction.dx, direction.dy)
+            let vect = CGVector(dx: direction.dx * magnitude, dy: direction.dy * magnitude)
+            
+            let gravity = SKAction.applyForce(vect, duration: 0.5)
+            ball1?.run(gravity)
+        }
         
         if (!planetHit) {
             if (point.x < -w || point.x > w) {
