@@ -68,7 +68,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func touchDown(atPoint pos : CGPoint) {
-        opp.update(ball: self.ball)
+        
     }
     
     func touchMoved(toPoint pos : CGPoint) {
@@ -76,7 +76,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func touchUp(atPoint pos : CGPoint) {
-    
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -115,6 +115,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for entity in self.entities {
             entity.update(deltaTime: dt)
         }
+        opp.update(ball: self.ball)
         
         self.lastUpdateTime = currentTime
     }

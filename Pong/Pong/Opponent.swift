@@ -26,9 +26,15 @@ class Opponent {
     }
     
     func update(ball: SKNode) {
-        let ballPos = ball.position
-        let trans = ball.position.x - self.bar.position.x
-        self.bar.position = CGPoint(x: trans, y: self.bar.position.y)
+        let diff = ball.position.x - self.bar.position.x
+        var trans: CGFloat
+        if (diff < 0) {
+            trans = (diff > -speed) ? diff : -speed
+        } else {
+            trans = (diff < speed) ? diff : speed
+        }
+        
+        self.bar.position = self.bar.position.applying(CGAffineTransform(translationX: trans, y: 0))
     }
     
 }
