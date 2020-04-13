@@ -27,6 +27,10 @@ class Ball: SKNode {
         self.addChild(shape)
     }
     
+    func getR() -> CGFloat {
+        return (self.shape?.frame.width)! / 2.0
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

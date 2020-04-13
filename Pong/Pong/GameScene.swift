@@ -17,6 +17,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var lastUpdateTime : TimeInterval = 0
     private var curBar: Bar = Bar()
     private var ball: Ball = Ball()
+    private var r: CGFloat = 70.0
     
     override func sceneDidLoad() {
         physicsWorld.contactDelegate = self
@@ -25,8 +26,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             dy: -1)
         
         self.physicsBody = SKPhysicsBody(edgeLoopFrom: CGRect(
-            x: -self.frame.width / 2 + 70, y: -self.frame.height / 2,
-            width: self.frame.width - 140, height: self.frame.height))
+            x: -self.frame.width / 2 + self.r, y: -self.frame.height / 2,
+            width: self.frame.width - 2 * self.r, height: self.frame.height))
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.categoryBitMask = 0b1
         self.physicsBody?.contactTestBitMask = 0b0
@@ -41,8 +42,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
         let point = contact.contactPoint
-        let w = self.frame.width / 2 - 75
-        let h = self.frame.height / 2 - 5
+        let w = self.frame.width / 2 - self.ball.getR() - self.r
+        let h = self.frame.height / 2 - self.ball.getR()
         if (point.x < -w || point.x > w) {
             physicsWorld.gravity = CGVector(
                 dx: -physicsWorld.gravity.dx * CGFloat.random(in: 0.5...1.5),
