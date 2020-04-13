@@ -82,21 +82,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if (planetHit) {
             let center = planet.position
-            let ball1 = (node1!.isEqual(to: ball)) ? node1 : node2
+//            let ball1 = (node1!.isEqual(to: ball)) ? node1 : node2
             
-            let direction = CGVector(dx: (center.x - ball1!.position.x) * 0.1, dy: (center.y - ball1!.position.y) * 0.1)
-            let magnitude = hypot(direction.dx, direction.dy)
-            let vect = CGVector(dx: direction.dx * magnitude * 0.1, dy: direction.dy * magnitude * 0.1)
+            let direction = CGVector(dx: (center.x - ball.position.x), dy: (center.y - ball.position.y))
+//            let magnitude = hypot(direction.dx, direction.dy)
+            let vect = CGVector(dx: direction.dx, dy: direction.dy)
             
-            let len = hypot(ball1!.physicsBody!.velocity.dx, ball1!.physicsBody!.velocity.dy)
-            if (len > 70.0)
-            {
-                ball1?.physicsBody?.velocity.dx *= 70.0 / len;
-                ball1?.physicsBody?.velocity.dy *= 70.0 / len;
-            }
-            
-            let gravity = SKAction.applyForce(vect, duration: 0.05)
-            ball1?.run(gravity)
+            let gravity = SKAction.applyForce(vect, duration: 0.1)
+            ball.run(gravity)
         }
         
         if (!planetHit) {
