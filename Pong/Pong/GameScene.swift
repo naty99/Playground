@@ -23,10 +23,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     private var opponentScore: Int = 0
     private var playerScore: Int = 0
-    
-    private var opponentScoreLabel: SKLabelNode! = SKLabelNode(text: "0")
-    private var playerScoreLabel: SKLabelNode! = SKLabelNode(text: "0")
-    
+        
+    private var opponentScoreLabel: SKLabelNode! = SKLabelNode()
+    private var playerScoreLabel: SKLabelNode! = SKLabelNode()
     
     override func sceneDidLoad() {
         setLabels()
@@ -45,7 +44,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsBody?.contactTestBitMask = 0b0
 
         self.backgroundColor = SKColor.init(displayP3Red: 0.085, green: 0.085, blue: 0.113, alpha: 1)
-        
+                
         // Add bar
         bar.position = CGPoint(x: 0, y: -self.frame.height / 2 + 100)
         self.addChild(bar)
@@ -208,8 +207,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         opponentScoreLabel.text = "\(opponentScore)"
         playerScoreLabel.text = "\(playerScore)"
         
-        opponentScoreLabel.fontName = "pixelmix.ttf"
-        playerScoreLabel.fontName = "pixelmix.ttf"
+        opponentScoreLabel.fontName = "pixelmix"
+        playerScoreLabel.fontName = "pixelmix"
         
         opponentScoreLabel.fontSize = 50
         playerScoreLabel.fontSize = 50
