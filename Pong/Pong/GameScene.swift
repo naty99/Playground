@@ -83,7 +83,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let h = self.frame.height / 2 - self.ball.getRadius()
         
         if (planetHit) {
-            let center = planet.position
+            let center = planet.shape!.position
 //            let ball1 = (node1!.isEqual(to: ball)) ? node1 : node2
             
             let direction = CGVector(dx: (ball.position.x - center.x), dy: (ball.position.y - center.y))
@@ -168,6 +168,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Update opponent based on the ball
         opp.update(ball: self.ball)
+        planet.update()
         
         self.lastUpdateTime = currentTime
     }

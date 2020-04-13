@@ -12,14 +12,17 @@ import SpriteKit
 class Planet: SKNode {
     
     var outerPhysics: SKPhysicsBody?
+    var shape: SKShapeNode?
+    var trajectory = (w: 250.0, h: 100.0)
+    var off: Double = 0.0
     
     override init() {
         super.init()
         
         let radius: CGFloat = CGFloat.random(in: 8...12)
         let steps: Int = Int(radius)
-        let shape = SKShapeNode(circleOfRadius: radius)
-        shape.fillColor = UIColor.white
+        self.shape = SKShapeNode(circleOfRadius: radius)
+        shape!.fillColor = UIColor.white
         
         self.physicsBody = SKPhysicsBody(circleOfRadius: radius + CGFloat(11) * radius / 2)
         self.physicsBody?.affectedByGravity = false
@@ -30,10 +33,17 @@ class Planet: SKNode {
         for i in 0...steps {
             let circle = SKShapeNode(circleOfRadius: radius + CGFloat(i + 1) * radius / CGFloat(steps) * 8)
             circle.strokeColor = UIColor(hue: 0, saturation: 0, brightness: 1, alpha: 1 - 1 / CGFloat(steps) * CGFloat(i))
-            self.addChild(circle)
+            self.shape!.addChild(circle)
         }
         
-        addChild(shape)
+        addChild(shape!)
+    }
+    
+    func update() {
+        self.position = CGPoint(
+            x: sin(self.off) * trajectory.w,
+            y: cos(self.off) * trajectory.h)
+        off += 0.02
     }
     
     required init?(coder aDecoder: NSCoder) {
