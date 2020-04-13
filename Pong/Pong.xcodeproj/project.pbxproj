@@ -18,6 +18,7 @@
 		9A8749AF2443A85700F9793D /* PongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8749AE2443A85700F9793D /* PongTests.swift */; };
 		9A8749BA2443A85700F9793D /* PongUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8749B92443A85700F9793D /* PongUITests.swift */; };
 		9AFCE3752443AE6900442AC3 /* Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFCE3742443AE6900442AC3 /* Bar.swift */; };
+		BA75C9C924446FC20068064F /* Opponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA75C9C824446FC20068064F /* Opponent.swift */; };
 		BAD26EE12443BC0D00EAA3B0 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD26EE02443BC0D00EAA3B0 /* Ball.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		9A8749B92443A85700F9793D /* PongUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongUITests.swift; sourceTree = "<group>"; };
 		9A8749BB2443A85700F9793D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AFCE3742443AE6900442AC3 /* Bar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bar.swift; sourceTree = "<group>"; };
+		BA75C9C824446FC20068064F /* Opponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opponent.swift; sourceTree = "<group>"; };
 		BAD26EE02443BC0D00EAA3B0 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +114,7 @@
 				9A8749972443A85600F9793D /* Actions.sks */,
 				9A8749992443A85600F9793D /* GameScene.swift */,
 				BAD26EE02443BC0D00EAA3B0 /* Ball.swift */,
+				BA75C9C824446FC20068064F /* Opponent.swift */,
 				9A87499B2443A85600F9793D /* GameViewController.swift */,
 				9A87499D2443A85600F9793D /* Main.storyboard */,
 				9A8749A02443A85700F9793D /* Assets.xcassets */,
@@ -275,6 +278,7 @@
 			files = (
 				9A87499A2443A85600F9793D /* GameScene.swift in Sources */,
 				9AFCE3752443AE6900442AC3 /* Bar.swift in Sources */,
+				BA75C9C924446FC20068064F /* Opponent.swift in Sources */,
 				BAD26EE12443BC0D00EAA3B0 /* Ball.swift in Sources */,
 				9A87499C2443A85600F9793D /* GameViewController.swift in Sources */,
 				9A8749942443A85500F9793D /* AppDelegate.swift in Sources */,

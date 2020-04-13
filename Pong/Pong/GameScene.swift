@@ -15,8 +15,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var graphs = [String : GKGraph]()
     
     private var lastUpdateTime : TimeInterval = 0
-    private var curBar: Bar = Bar()
+    private var bar: Bar = Bar()
     private var ball: Ball = Ball()
+    private var opp: Opponent = Opponent(5.0)
     private var r: CGFloat = 70.0
     
     override func sceneDidLoad() {
@@ -34,9 +35,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         self.backgroundColor = SKColor.init(displayP3Red: 0.085, green: 0.085, blue: 0.113, alpha: 1)
         
-        curBar.position = CGPoint(x: 0, y: -self.frame.height / 2 + 100)
-        self.addChild(curBar)
+        // Add bar
+        bar.position = CGPoint(x: 0, y: -self.frame.height / 2 + 100)
+        self.addChild(bar)
+        
+        // Add ball
         self.addChild(ball)
+        
+        // Add opponent
+        self.opp.setPosition(pos: CGPoint(x: 0, y: self.frame.height / 2 - 100))
+        self.addChild(self.opp.getBar())
         
     }
     
@@ -60,7 +68,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func touchDown(atPoint pos : CGPoint) {
-        
+        opp.update(ball: self.ball)
     }
     
     func touchMoved(toPoint pos : CGPoint) {
@@ -77,11 +85,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches {
             self.touchMoved(toPoint: t.location(in: self))
-            var x: CGFloat, w = self.curBar.getWidth()
+            var x: CGFloat, w = self.bar.getWidth()
             if (t.location(in: self).x < -self.frame.width / 2 + w) { x = -self.frame.width / 2 + w }
             else if (t.location(in: self).x > self.frame.width / 2 - w) { x = self.frame.width / 2 - w }
             else { x = t.location(in: self).x }
-            curBar.position.x = x
+            bar.position.x = x
         }
     }
     
