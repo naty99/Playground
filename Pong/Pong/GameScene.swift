@@ -20,7 +20,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var opp: Opponent = Opponent(5.0)
     private var r: CGFloat = 70.0
     
+    private var opponentScore: Int = 0
+    private var playerScore: Int = 0
+    
+    private var opponentScoreLabel: SKLabelNode! = SKLabelNode(text: "0")
+    private var playerScoreLabel: SKLabelNode! = SKLabelNode(text: "0")
+    
+    
     override func sceneDidLoad() {
+        opponentScoreLabel.text = "\(opponentScore)"
+        playerScoreLabel.text = "\(playerScore)"
+        
+        opponentScoreLabel.fontName = "pixelmix.ttf"
+        playerScoreLabel.fontName = "pixelmix.ttf"
+        
+        opponentScoreLabel.fontSize = 50
+        playerScoreLabel.fontSize = 50
+        
+        opponentScoreLabel.position = CGPoint(x: self.frame.minX + 100, y: 40)
+        playerScoreLabel.position = CGPoint(x: self.frame.maxX - 100, y: -50)
+        
+        addChild(opponentScoreLabel)
+        addChild(playerScoreLabel)
+        
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector(
             dx: CGFloat.random(in: 1...2) * ((CGFloat.random(in: 0...1) > 0.5) ? 1 : -1),
@@ -67,11 +89,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 dy: physicsWorld.gravity.dy * CGFloat.random(in: 0.5...2))
         } else {
             if (point.y < -h || point.y > h) {
-                print("you lost")
+                let recenter = SKAction.move(to: CGPoint(x: 0, y: 0), duration: 1)
+                ball.run(recenter)
             } else {
                 physicsWorld.gravity = CGVector(
                     dx: physicsWorld.gravity.dx * CGFloat.random(in: 0.8...1.2),
                 dy: -physicsWorld.gravity.dy * CGFloat.random(in: 0.5...2))
+            }
+        }
+        
+        if (contact.bodyA.node!.isEqual(ball) || contact.bodyB.node!.isEqual(ball)) {
+            if (contact.contactPoint.y < bar.position.y - bar.frame.height) {
+                opponentScore += 1
+                opponentScoreLabel.text = String(opponentScore)
+            } else if (contact.contactPoint.y > opp.getBar().position.y + bar.frame.height) {
+                playerScore += 1
+                playerScoreLabel.text = String(playerScore)
             }
         }
     }
