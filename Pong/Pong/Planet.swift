@@ -15,10 +15,13 @@ class Planet: SKNode {
     var shape: SKShapeNode?
     var trajectory = (w: 250.0, h: 100.0)
     var off: Double = 0.0
+    var fx, fy: (Double) -> Double
     
     override init() {
         super.init()
-        
+        self.fx = generateFunction(dt: Double(Int.random(in: 1...3)), c: (Float.random(in: 0...1) > 0.5))
+        self.fy = generateFunction(dt: Double(Int.random(in: 1...3)), c: (Float.random(in: 0...1) > 0.5))
+
         let radius: CGFloat = CGFloat.random(in: 8...12)
         let steps: Int = Int(radius)
         self.shape = SKShapeNode(circleOfRadius: radius)
@@ -41,9 +44,13 @@ class Planet: SKNode {
     
     func update() {
         self.position = CGPoint(
-            x: sin(self.off) * trajectory.w,
-            y: cos(self.off) * trajectory.h)
+            x: self.fx(self.off) * trajectory.w,
+            y: self.fy(self.off) * trajectory.h)
         off += 0.02
+    }
+    
+    func generateFunction(dt: Double, c: Bool) -> (Double) -> Double {
+        return c ? { (off) -> Double in cos(dt * off) } : { (off) -> Double in sin(dt * off) }
     }
     
     required init?(coder aDecoder: NSCoder) {
