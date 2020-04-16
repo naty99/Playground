@@ -185,8 +185,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let pos = (p.y > 0) ? self.opp.getBar().position : self.bar.position
         var dy = -physicsWorld.gravity.dy * CGFloat.random(in: 1...1.5)
         dy = (dy > 0) ? min(dy, 6) : max(dy, -6)
-        let perc = (pos.x - p.x) / 150
-        let diff = perc * 5 + dy * (CGFloat.random(in: 0...1) > 0.5 ? 1 : -1)
+        let perc = (pos.x - p.x) / self.bar.getWidth()
+        let diff = pow(perc * 2, 2) * (perc > 0 ? 1 : -1) * 10 + dy * (perc > 0 ? 1 : -1)
+//        let diff = perc * 5 + dy * (CGFloat.random(in: 0...1) > 0.5 ? 1 : -1)
         
         physicsWorld.gravity = CGVector(dx: diff, dy: dy)
     }

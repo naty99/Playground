@@ -32,7 +32,7 @@ class Planet: SKNode {
         
         shape!.fillColor = UIColor.white
         
-        self.physicsBody = SKPhysicsBody(circleOfRadius: radius + CGFloat(11) * radius / 2)
+        self.physicsBody = SKPhysicsBody(circleOfRadius: radius + CGFloat(steps) * radius / 2)
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.categoryBitMask = 0b100
         self.physicsBody?.collisionBitMask = 0b0
