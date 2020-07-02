@@ -34,11 +34,6 @@ class Opponent {
             trans = (diff < speed) ? diff : speed
         }
         
-//        if (t.location(in: self).x < -self.frame.width / 2 + w) { x = -self.frame.width / 2 + w }
-//        else if (t.location(in: self).x > self.frame.width / 2 - w) { x = self.frame.width / 2 - w }
-//        else { x = t.location(in: self).x }
-//        bar.position.x = x
-        
         self.bar.position = self.bar.position.applying(CGAffineTransform(translationX: trans, y: 0))
         self.bar.position.x = (self.bar.position.x < -self.bar.scene!.frame.width / 2 + self.bar.getWidth()) ?
             -self.bar.scene!.frame.width / 2 + self.bar.getWidth() : self.bar.position.x
