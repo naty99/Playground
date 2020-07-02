@@ -17,7 +17,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var lastUpdateTime : TimeInterval = 0
     private var bar: Bar = Bar()
     private var ball: Ball = Ball()
-    private var opp: Opponent = Opponent(10.0)
+    private var opp: Opponent = Opponent(7.0)
     private var planet: Planet = Planet()
     private var r: CGFloat = 70.0
     
@@ -42,7 +42,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(ball)
         
         // Add planet
-        self.addChild(planet)
+//        self.addChild(planet)
         
         // Add opponent
         self.opp.setPosition(pos: CGPoint(x: 0, y: self.frame.height / 2 - 100))
@@ -60,18 +60,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-        let type1 = NSStringFromClass(contact.bodyA.node!.classForCoder)
-        let type2 = NSStringFromClass(contact.bodyB.node!.classForCoder)
+        // Category BitMasks
+        // Bar -> 1
+        // Ball -> 10
+        // Planet -> 100
+        
+        let cat1 = contact.bodyA.categoryBitMask
+        let cat2 = contact.bodyB.categoryBitMask
         
         // Bar vs. Ball
-        if ((type1 == "Pong.Ball" && type2 == "Pong.Bar") || (type2 == "Pong.Ball" && type1 == "Pong.Bar")) {
-            print("success")
+        if (cat1 + cat2 == 11) {
+            collisionBar(p: contact.contactPoint)
         }
         
-        
         let planetHit = (contact.bodyA.node!.isEqual(to: planet) || contact.bodyB.node!.isEqual(to: planet))
-        
-        let point = contact.contactPoint
         
         let w = self.frame.width / 2 - self.ball.getRadius() - self.r
         let h = self.frame.height / 2 - self.ball.getRadius()
@@ -89,10 +91,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if (!planetHit) {
-            if (point.x < -w || point.x > w) { collisionSides() }
+            if (contact.contactPoint.x < -w || contact.contactPoint.x > w) { collisionSides() }
             else {
-                if (point.y < -h || point.y > h) { score() }
-                else { collisionBar(p: point) }
+                if (contact.contactPoint.y < -h || contact.contactPoint.y > h) { score() }
             }
         }
         
@@ -185,11 +186,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let pos = (p.y > 0) ? self.opp.getBar().position : self.bar.position
         var dy = -physicsWorld.gravity.dy * CGFloat.random(in: 1...1.5)
         dy = (dy > 0) ? min(dy, 6) : max(dy, -6)
-        let perc = (pos.x - p.x) / self.bar.getWidth()
-        let diff = pow(perc * 2, 2) * (perc > 0 ? 1 : -1) * 10 + dy * (perc > 0 ? 1 : -1)
+//        let perc = (pos.x - p.x) / self.bar.getWidth()
+//        let diff = pow(perc * 2, 2) * (perc > 0 ? 1 : -1) * 10 + dy * (perc > 0 ? 1 : -1)
 //        let diff = perc * 5 + dy * (CGFloat.random(in: 0...1) > 0.5 ? 1 : -1)
         
-        physicsWorld.gravity = CGVector(dx: diff, dy: dy)
+        physicsWorld.gravity = CGVector(dx: 0, dy: dy)
     }
     
     func score() {
