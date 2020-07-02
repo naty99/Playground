@@ -12,6 +12,8 @@ import GameplayKit
 class GameScene: SKScene {
     
     private var ball : Ball?
+    private var player: Bar?
+    private var enemy: Bar?
     
     override func sceneDidLoad() {
         createElements()
@@ -45,6 +47,11 @@ class GameScene: SKScene {
     
     private func createElements() {
         ball = Ball(radius: 15.0)
-        self.addChild(ball!)
+        player = Bar()
+        enemy = Bar()
+        
+        self.addChild(node: ball)
+        self.addChild(node: player)
+        self.addChild(node: enemy)
     }
 }
