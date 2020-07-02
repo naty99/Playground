@@ -1,0 +1,603 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9AEB39A624ADF7D900AD52F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB39A524ADF7D900AD52F8 /* AppDelegate.swift */; };
+		9AEB39A824ADF7D900AD52F8 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9AEB39A724ADF7D900AD52F8 /* GameScene.sks */; };
+		9AEB39AA24ADF7D900AD52F8 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9AEB39A924ADF7D900AD52F8 /* Actions.sks */; };
+		9AEB39AC24ADF7D900AD52F8 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB39AB24ADF7D900AD52F8 /* GameScene.swift */; };
+		9AEB39AE24ADF7D900AD52F8 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB39AD24ADF7D900AD52F8 /* GameViewController.swift */; };
+		9AEB39B124ADF7D900AD52F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AEB39AF24ADF7D900AD52F8 /* Main.storyboard */; };
+		9AEB39B324ADF7DB00AD52F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AEB39B224ADF7DB00AD52F8 /* Assets.xcassets */; };
+		9AEB39B624ADF7DB00AD52F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AEB39B424ADF7DB00AD52F8 /* LaunchScreen.storyboard */; };
+		9AEB39C124ADF7DB00AD52F8 /* GravityPongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB39C024ADF7DB00AD52F8 /* GravityPongTests.swift */; };
+		9AEB39CC24ADF7DB00AD52F8 /* GravityPongUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB39CB24ADF7DB00AD52F8 /* GravityPongUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9AEB39BD24ADF7DB00AD52F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AEB399A24ADF7D900AD52F8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9AEB39A124ADF7D900AD52F8;
+			remoteInfo = GravityPong;
+		};
+		9AEB39C824ADF7DB00AD52F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AEB399A24ADF7D900AD52F8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9AEB39A124ADF7D900AD52F8;
+			remoteInfo = GravityPong;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9AEB39A224ADF7D900AD52F8 /* GravityPong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GravityPong.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AEB39A524ADF7D900AD52F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9AEB39A724ADF7D900AD52F8 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		9AEB39A924ADF7D900AD52F8 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		9AEB39AB24ADF7D900AD52F8 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		9AEB39AD24ADF7D900AD52F8 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		9AEB39B024ADF7D900AD52F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9AEB39B224ADF7DB00AD52F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9AEB39B524ADF7DB00AD52F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9AEB39B724ADF7DB00AD52F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AEB39BC24ADF7DB00AD52F8 /* GravityPongTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GravityPongTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AEB39C024ADF7DB00AD52F8 /* GravityPongTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GravityPongTests.swift; sourceTree = "<group>"; };
+		9AEB39C224ADF7DB00AD52F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AEB39C724ADF7DB00AD52F8 /* GravityPongUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GravityPongUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AEB39CB24ADF7DB00AD52F8 /* GravityPongUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GravityPongUITests.swift; sourceTree = "<group>"; };
+		9AEB39CD24ADF7DB00AD52F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9AEB399F24ADF7D900AD52F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AEB39B924ADF7DB00AD52F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AEB39C424ADF7DB00AD52F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9AEB399924ADF7D900AD52F8 = {
+			isa = PBXGroup;
+			children = (
+				9AEB39A424ADF7D900AD52F8 /* GravityPong */,
+				9AEB39BF24ADF7DB00AD52F8 /* GravityPongTests */,
+				9AEB39CA24ADF7DB00AD52F8 /* GravityPongUITests */,
+				9AEB39A324ADF7D900AD52F8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9AEB39A324ADF7D900AD52F8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9AEB39A224ADF7D900AD52F8 /* GravityPong.app */,
+				9AEB39BC24ADF7DB00AD52F8 /* GravityPongTests.xctest */,
+				9AEB39C724ADF7DB00AD52F8 /* GravityPongUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9AEB39A424ADF7D900AD52F8 /* GravityPong */ = {
+			isa = PBXGroup;
+			children = (
+				9AEB39A524ADF7D900AD52F8 /* AppDelegate.swift */,
+				9AEB39A724ADF7D900AD52F8 /* GameScene.sks */,
+				9AEB39A924ADF7D900AD52F8 /* Actions.sks */,
+				9AEB39AB24ADF7D900AD52F8 /* GameScene.swift */,
+				9AEB39AD24ADF7D900AD52F8 /* GameViewController.swift */,
+				9AEB39AF24ADF7D900AD52F8 /* Main.storyboard */,
+				9AEB39B224ADF7DB00AD52F8 /* Assets.xcassets */,
+				9AEB39B424ADF7DB00AD52F8 /* LaunchScreen.storyboard */,
+				9AEB39B724ADF7DB00AD52F8 /* Info.plist */,
+			);
+			path = GravityPong;
+			sourceTree = "<group>";
+		};
+		9AEB39BF24ADF7DB00AD52F8 /* GravityPongTests */ = {
+			isa = PBXGroup;
+			children = (
+				9AEB39C024ADF7DB00AD52F8 /* GravityPongTests.swift */,
+				9AEB39C224ADF7DB00AD52F8 /* Info.plist */,
+			);
+			path = GravityPongTests;
+			sourceTree = "<group>";
+		};
+		9AEB39CA24ADF7DB00AD52F8 /* GravityPongUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9AEB39CB24ADF7DB00AD52F8 /* GravityPongUITests.swift */,
+				9AEB39CD24ADF7DB00AD52F8 /* Info.plist */,
+			);
+			path = GravityPongUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9AEB39A124ADF7D900AD52F8 /* GravityPong */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9AEB39D024ADF7DB00AD52F8 /* Build configuration list for PBXNativeTarget "GravityPong" */;
+			buildPhases = (
+				9AEB399E24ADF7D900AD52F8 /* Sources */,
+				9AEB399F24ADF7D900AD52F8 /* Frameworks */,
+				9AEB39A024ADF7D900AD52F8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GravityPong;
+			productName = GravityPong;
+			productReference = 9AEB39A224ADF7D900AD52F8 /* GravityPong.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9AEB39BB24ADF7DB00AD52F8 /* GravityPongTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9AEB39D324ADF7DB00AD52F8 /* Build configuration list for PBXNativeTarget "GravityPongTests" */;
+			buildPhases = (
+				9AEB39B824ADF7DB00AD52F8 /* Sources */,
+				9AEB39B924ADF7DB00AD52F8 /* Frameworks */,
+				9AEB39BA24ADF7DB00AD52F8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9AEB39BE24ADF7DB00AD52F8 /* PBXTargetDependency */,
+			);
+			name = GravityPongTests;
+			productName = GravityPongTests;
+			productReference = 9AEB39BC24ADF7DB00AD52F8 /* GravityPongTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9AEB39C624ADF7DB00AD52F8 /* GravityPongUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9AEB39D624ADF7DB00AD52F8 /* Build configuration list for PBXNativeTarget "GravityPongUITests" */;
+			buildPhases = (
+				9AEB39C324ADF7DB00AD52F8 /* Sources */,
+				9AEB39C424ADF7DB00AD52F8 /* Frameworks */,
+				9AEB39C524ADF7DB00AD52F8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9AEB39C924ADF7DB00AD52F8 /* PBXTargetDependency */,
+			);
+			name = GravityPongUITests;
+			productName = GravityPongUITests;
+			productReference = 9AEB39C724ADF7DB00AD52F8 /* GravityPongUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9AEB399A24ADF7D900AD52F8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = Bleach;
+				TargetAttributes = {
+					9AEB39A124ADF7D900AD52F8 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					9AEB39BB24ADF7DB00AD52F8 = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 9AEB39A124ADF7D900AD52F8;
+					};
+					9AEB39C624ADF7DB00AD52F8 = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 9AEB39A124ADF7D900AD52F8;
+					};
+				};
+			};
+			buildConfigurationList = 9AEB399D24ADF7D900AD52F8 /* Build configuration list for PBXProject "GravityPong" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9AEB399924ADF7D900AD52F8;
+			productRefGroup = 9AEB39A324ADF7D900AD52F8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9AEB39A124ADF7D900AD52F8 /* GravityPong */,
+				9AEB39BB24ADF7DB00AD52F8 /* GravityPongTests */,
+				9AEB39C624ADF7DB00AD52F8 /* GravityPongUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9AEB39A024ADF7D900AD52F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AEB39B124ADF7D900AD52F8 /* Main.storyboard in Resources */,
+				9AEB39A824ADF7D900AD52F8 /* GameScene.sks in Resources */,
+				9AEB39B324ADF7DB00AD52F8 /* Assets.xcassets in Resources */,
+				9AEB39B624ADF7DB00AD52F8 /* LaunchScreen.storyboard in Resources */,
+				9AEB39AA24ADF7D900AD52F8 /* Actions.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AEB39BA24ADF7DB00AD52F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AEB39C524ADF7DB00AD52F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9AEB399E24ADF7D900AD52F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AEB39AC24ADF7D900AD52F8 /* GameScene.swift in Sources */,
+				9AEB39AE24ADF7D900AD52F8 /* GameViewController.swift in Sources */,
+				9AEB39A624ADF7D900AD52F8 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AEB39B824ADF7DB00AD52F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AEB39C124ADF7DB00AD52F8 /* GravityPongTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AEB39C324ADF7DB00AD52F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AEB39CC24ADF7DB00AD52F8 /* GravityPongUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9AEB39BE24ADF7DB00AD52F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9AEB39A124ADF7D900AD52F8 /* GravityPong */;
+			targetProxy = 9AEB39BD24ADF7DB00AD52F8 /* PBXContainerItemProxy */;
+		};
+		9AEB39C924ADF7DB00AD52F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9AEB39A124ADF7D900AD52F8 /* GravityPong */;
+			targetProxy = 9AEB39C824ADF7DB00AD52F8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9AEB39AF24ADF7D900AD52F8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9AEB39B024ADF7D900AD52F8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9AEB39B424ADF7DB00AD52F8 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9AEB39B524ADF7DB00AD52F8 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9AEB39CE24ADF7DB00AD52F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9AEB39CF24ADF7DB00AD52F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9AEB39D124ADF7DB00AD52F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 96K845G899;
+				INFOPLIST_FILE = GravityPong/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Bleach.GravityPong;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9AEB39D224ADF7DB00AD52F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 96K845G899;
+				INFOPLIST_FILE = GravityPong/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Bleach.GravityPong;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		9AEB39D424ADF7DB00AD52F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 96K845G899;
+				INFOPLIST_FILE = GravityPongTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Bleach.GravityPongTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GravityPong.app/GravityPong";
+			};
+			name = Debug;
+		};
+		9AEB39D524ADF7DB00AD52F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 96K845G899;
+				INFOPLIST_FILE = GravityPongTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Bleach.GravityPongTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GravityPong.app/GravityPong";
+			};
+			name = Release;
+		};
+		9AEB39D724ADF7DB00AD52F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 96K845G899;
+				INFOPLIST_FILE = GravityPongUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Bleach.GravityPongUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GravityPong;
+			};
+			name = Debug;
+		};
+		9AEB39D824ADF7DB00AD52F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 96K845G899;
+				INFOPLIST_FILE = GravityPongUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Bleach.GravityPongUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GravityPong;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9AEB399D24ADF7D900AD52F8 /* Build configuration list for PBXProject "GravityPong" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AEB39CE24ADF7DB00AD52F8 /* Debug */,
+				9AEB39CF24ADF7DB00AD52F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9AEB39D024ADF7DB00AD52F8 /* Build configuration list for PBXNativeTarget "GravityPong" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AEB39D124ADF7DB00AD52F8 /* Debug */,
+				9AEB39D224ADF7DB00AD52F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9AEB39D324ADF7DB00AD52F8 /* Build configuration list for PBXNativeTarget "GravityPongTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AEB39D424ADF7DB00AD52F8 /* Debug */,
+				9AEB39D524ADF7DB00AD52F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9AEB39D624ADF7DB00AD52F8 /* Build configuration list for PBXNativeTarget "GravityPongUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AEB39D724ADF7DB00AD52F8 /* Debug */,
+				9AEB39D824ADF7DB00AD52F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9AEB399A24ADF7D900AD52F8 /* Project object */;
+}
